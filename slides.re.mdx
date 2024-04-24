@@ -1,0 +1,485 @@
+export { Components } from "./Components.tsx";
+export { Themes } from "./Themes.tsx";
+
+# About Static Hermes
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-hermes.png" />
+  </Column>
+  <Column justify="end" align="right">
+    <Text>Naturalclar</Text>
+    <Link href="https://meguro.es">meguro.es #26</Link>
+  </Column>
+</Row>
+
+---
+
+# About me
+
+<Row>
+  <Column align="left">
+    <Heading>Naturalclar</Heading>
+    <Text>Developer at Stand.fm</Text>
+    <Text>React Native Community</Text>
+    <Text>
+      X: <Link href="https://x.com/natural_clar">@natural_clar</Link>
+    </Text>
+    <Text>
+      GitHub: <Link href="https://github.com/Naturalclar">Naturalclar</Link>
+    </Text>
+  </Column>
+  <Column justify="center">
+    <MyIcon />
+  </Column>
+</Row>
+
+<Note>自己紹介スライド</Note>
+
+---
+
+# 本日の概要
+
+<Row>
+  <Column align="left">
+    <Text>Hermes Engine について</Text>
+    <Text>Static Hermes による変化</Text>
+    <Text>shermes、deno、bun の軽い比較</Text>
+  </Column>
+</Row>
+
+---
+
+# Hermes Engine
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-hermes.png" />
+  </Column>
+</Row>
+
+---
+
+# Hermes Engine
+
+<Row>
+  <Column align="left">
+    <Text>Meta社が開発している JS Engine</Text>
+    <SubText>
+      他のJsEngine：V8 (Node, Chrome), JSC (Safari), SpiderMonkey(FireFox) 等
+    </SubText>
+    <Text>主にReact Native で使用されている</Text>
+    <SubText>
+      MarketPlace や Meta Quest のストア等、Meta社の Production
+      アプリでも使われている
+    </SubText>
+    <Text>TTI、アプリサイズ、メモリの削減</Text>
+  </Column>
+</Row>
+
+<Note>
+  主にReact Nativeで使用されている Meta社でのProductionアプリで使われている
+  MarketPlaceアプリやMeta Quest 3のアプリストアなど
+</Note>
+
+---
+
+# 他の JS Engine との違い
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-jsengines.png" />
+  </Column>
+</Row>
+
+---
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text>Minify されたJSを読み込む</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text bold>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text>Minify されたJSを読み込む</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text bold>Vite, Webpack, Metro</Text>
+    <Text bold>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text>Minify されたJSを読み込む</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text bold>Vite, Webpack, Metro</Text>
+    <Text bold>コードのバンドル化</Text>
+    <Text bold>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text>Minify されたJSを読み込む</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text bold>Minify されたJSを読み込む</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text bold>Minify されたJSを読み込む</Text>
+    <Text bold>コードをParseしてASTに変換</Text>
+    <Text>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text bold>Minify されたJSを読み込む</Text>
+    <Text bold>コードをParseしてASTに変換</Text>
+    <Text bold>実行する関数をバイトコードに変換</Text>
+    <Text>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+transition: none
+
+--
+
+# 通常の JsEngine
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>Vite, Webpack, Metro</Text>
+    <Text>コードのバンドル化</Text>
+    <Text>コードのMinify化</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text bold>Minify されたJSを読み込む</Text>
+    <Text bold>コードをParseしてASTに変換</Text>
+    <Text bold>実行する関数をバイトコードに変換</Text>
+    <Text bold>JIT Compile による効率化</Text>
+  </Column>
+</Row>
+
+---
+
+# 従来の JsEngine の問題点
+
+<Row>
+  <Column align="left">
+    <Text>モバイルで使うにあたって：</Text>
+    <Text>JITによる効率化が行われるまでに時間がかかる</Text>
+    <Text>ユーザーの実行環境のスペックに依存する</Text>
+    <Text>アプリ起動時にJITの恩恵が殆ど受けられない</Text>
+  </Column>
+</Row>
+
+---
+
+# Hermes の場合
+
+<Row>
+  <Column align="left">
+    <Heading>ビルド時</Heading>
+    <Text>コードのバンドル化</Text>
+    <Text>コードをParseしてASTに変換</Text>
+    <Text>AST から SSA IRの生成</Text>
+    <Text>SSA IRからバイトコードの作成</Text>
+  </Column>
+  <Splitter />
+  <Column align="left">
+    <Heading>実行時</Heading>
+    <Text>生成されたバイトコードを読み込む</Text>
+    <Text>バイトコードを実行</Text>
+  </Column>
+</Row>
+
+<Note>
+  Hermesの場合は、ビルド時にバイトコードを生成して、実行時にバイトコードを実行する
+  バイトコードはMinifyされたJSよりも小さく生成される SSAはStatic Single
+  Assignment form IR は Internal Representation of the code used by modern
+  optimizing compilers
+  最適化の内容は重複する文字列の削除や、デッドコードの削除、変数の最適化など
+  変数名の削除、関数名の削除
+</Note>
+
+---
+
+# SSA IR
+
+<Row>
+  <Column align="left">
+    <Text>Static Single Assignment form</Text>
+    <Text>
+      コンパイラによる中間表現のひとつ
+    </Text>
+    <Text>
+      デッドコードの削除、変数の最適化などが行われる
+    </Text>
+    <Text>
+    詳しくはWiki
+    </Text>
+  </Column>
+  <Column>
+    <Image src="./ssa-wiki.png"/>
+  </Column>
+</Row>
+
+---
+
+# Hermes まとめ
+
+- ビルド前にバイトコードを生成するため、ユーザーの実行環境に依存しない
+- バイトコードは Minify された JS よりも小さく生成されるためサイズの削減になる
+- JITの読み込みが不要なため起動時間が短縮される
+- JIT Optimization の恩恵は受けられない
+
+---
+
+# Static Hermes
+
+<Row>
+  <Column justify="center">
+    <GPTImage src="/gpt-js.png" />
+  </Column>
+</Row>
+
+---
+
+# Static Hermes
+
+<Row>
+  <Column align="left">
+    <Text>型付きの JavaScript をビルド時に NativeCode に変換する</Text>
+    <Text>Cで書かれたコードと同じパフォーマンスを出すことができる</Text>
+    <Text>生成には sound type で書かれている JS が必要</Text>
+    <Text>必要に応じて従来のHermesで生成されたバイトコード使い分ける</Text>
+  </Column>
+</Row>
+
+---
+
+# Sound types とは
+
+このコードは sound type で書かれているか？
+
+```ts
+function addXY(x: number, y: number): number {
+  return x + y;
+}
+```
+
+---
+
+# Sound types とは
+
+型的に問題なくても、実行時にエラーになってしまう。
+
+```ts
+function addXY(x: number, y: number): number {
+  return x + y;
+}
+
+let a: number[] = [10, 20, 30];
+
+// 型的にはエラーにならないが、undefined + undefined になってしまうので型的には間違っている
+addXY(a[10], a[11]);
+```
+
+---
+
+# Static Hermes の利点
+
+- Hermes によって、起動時間は短縮されたが、JIT の恩恵を受けることはできなくなった
+- React Native では c++ を使って必要な処理を高速化することはできるが、JS 開発者にはハードルが高い
+- Static Hermes では、TypeScript/Flow で書かれた JS を C 同等のパフォーマンスで実行できる
+- Static Hermes では C のコードと平行して実行することもできる
+
+---
+
+# サイズ比較
+
+<Text>fizzbuzz by ChatGPT</Text>
+
+```ts
+// main.ts
+function fizzBuzz(): void {
+  for (let i = 0; i <= 15; i++) {
+    let output = "";
+    if (i % 3 === 0) {output += "fizz";}
+    if (i % 5 === 0) {output += "buzz";}
+    console.log(output || i);
+  }
+}
+fizzBuzz(); // Call the function
+```
+
+---
+
+# サイズ比較
+
+- `deno compile --unstable ./main.ts --output deno-bin`
+- `bun build ./main.ts --compile --outfile bun-bin`
+- `shermes -typed -o shermes-bin ./main.ts`
+
+---
+
+# サイズ比較
+
+<Image src="./bin-comparison.png" />
+
+---
+
+# まとめ
+
+<Row>
+  <Column align="left">
+    <Text>Hermes は JS をビルド前にバイトコードに変換する</Text>
+    <Text>Static Hermes は JS をビルド前にネイティブコードに変換する</Text>
+    <Text>Static Hermes は C のコードと平行して実行できる</Text>
+    <Text>Hermes と Static Hermes は併用できる</Text>
+    <Text>Static Hermes は React Native 外でも使える事が期待できる</Text>
+  </Column>
+</Row>
+
+---
+
+# Thank You!
+
+---
+
+# Refs
+
+- [hermes docs](https://hermesengine.dev/)
+- [RNEU 2019: Improving React Native Performance](https://youtu.be/BkRE4MsqFXU?si=LRXXWCm-YAMKN6r2)
+- [RNEU 2023: Demystifying JavaScript Engines](https://www.youtube.com/watch?v=LIhDyF1Gatc)
+- [RNEU 2023: Static Hermes: the Next Generation of Hermes](https://www.youtube.com/watch?v=q-xKYA0EO-c)
+- [Discussion: How to try Static Hermes](https://github.com/facebook/hermes/discussions/1137)
+- [Compiling TypeScript to Native Code](https://medium.com/@gautam1168/compiling-typescript-to-native-code-0238d69ca582)
