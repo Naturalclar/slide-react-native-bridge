@@ -271,6 +271,7 @@ transition: none
 <Row>
   <Column align="left">
     <Text>Camera や Audio など、ネイティブ側に存在するモジュールを実行する仕組み</Text>
+    <SubText>以前は Bridge を介してすべてを非同期的に呼んでいた</SubText>
     <Text>Objective-C/Swift, Java/Kotlin のコードを JSI 経由で呼び出す</Text>
     <SubText>C++ を通して Objective-C++, JNI 経由での通信を可能にする</SubText>
     <SubText>C++ への参照を持つため、画像データに対してフィルターを掛ける時等、JSI 側のみで処理を行って結果だけを JS 側に返すことも可能</SubText>
@@ -283,9 +284,11 @@ transition: none
 
 <Row>
   <Column align="left">
-    <Text>TODO</Text>
-    <Text>TODO</Text>
-    <Text>TODO</Text>
+    <Text>画面描画を同期的に行うための仕組み。</Text>
+    <SubText>以前は Bridge を介して React の consile 結果を Native に送り、そこから Yoga に渡して描画内容が決定されていた</SubText>
+    <Text>レイアウトエンジンの Yoga が同期的に呼び出せる</Text>
+    <SubText>Yoga が C++ 製なので JSI と相性が良い</SubText>
+    <Text>描画が同期的に行われることによって React 18 の concurrent rendering が React Native でもできるようになった</Text>
   </Column>
 </Row>
 
@@ -322,9 +325,10 @@ transition: none
 
 <Row>
   <Column align="left">
-    <Text>TODO</Text>
-    <Text>TODO</Text>
-    <Text>TODO</Text>
+    <Text>New Architecture によって JavaScript 層から Native コードを同期的に呼び出せるようになった</Text>
+    <Text>JS 層と Native 層を非同期的に繋げていた Bridge が最新の React Native からデフォルトで使われなくなった</Text>
+    <Text>Bridge の削除によってアプリの起動速度改善、アプリサイズの削減が行われた</Text>
+    <Text>ここ６年の地道な変更によってかなりパフォーマンス的に改善された</Text>
   </Column>
 </Row>
 
