@@ -7,10 +7,15 @@ settings:
 overrides:
   shiki: ^0.11.0
 
+patchedDependencies:
+  '@nkzw/remdx@0.8.0':
+    hash: iy3mqblojj7jjmlwgapeuzqsny
+    path: patches/@nkzw__remdx@0.8.0.patch
+
 dependencies:
   '@nkzw/remdx':
-    specifier: '*'
-    version: 0.8.0(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.8.0
+    version: 0.8.0(patch_hash=iy3mqblojj7jjmlwgapeuzqsny)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -522,7 +527,7 @@ packages:
       - supports-color
     dev: true
 
-  /@nkzw/remdx@0.8.0(react-dom@18.2.0)(react@18.2.0):
+  /@nkzw/remdx@0.8.0(patch_hash=iy3mqblojj7jjmlwgapeuzqsny)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-bGu0ZDGwhwYsdAsZE+itwHhjtjb2hyTIP5uxyMuhsmc5tEbvKcxdAs8TVLAZG/ISKtz4PdtIpdiBhD08FfVGyg==}
     peerDependencies:
       react: ^18.2.0
@@ -531,6 +536,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
+    patched: true
 
   /@nkzw/vite-plugin-remdx@0.8.0(typescript@5.3.3):
     resolution: {integrity: sha512-rB8kdpQ3/hU8Td/Kl+du2mGcrpFCUI8HO8i57cgnWshfk7onYpKk5kFRHgx8f3O0QMO0fFssohz3rHkLS+LoXA==}

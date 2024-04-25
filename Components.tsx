@@ -151,11 +151,13 @@ export const Components = {
     alt,
     width,
     height,
+    objectFit = "contain",
   }: {
     src: string;
     alt: string;
     width: string | number;
     height: string | number;
+    objectFit?: "contain" | "cover" | "fill" | "none" | "scale-down";
   }) => (
     <div
       style={{
@@ -171,7 +173,7 @@ export const Components = {
         style={{
           height,
           width,
-          objectFit: "contain",
+          objectFit,
         }}
       />
     </div>
@@ -190,15 +192,15 @@ export const Components = {
       align === "left"
         ? "flex-start"
         : align === "center"
-        ? "center"
-        : "flex-end";
+          ? "center"
+          : "flex-end";
 
     const justifyContent =
       justify === "center"
         ? "center"
         : justify === "start"
-        ? "flex-start"
-        : "flex-end";
+          ? "flex-start"
+          : "flex-end";
 
     return (
       <div
