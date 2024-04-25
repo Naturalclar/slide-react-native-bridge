@@ -1,15 +1,15 @@
 export { Components } from "./Components.tsx";
 export { Themes } from "./Themes.tsx";
 
-# About Static Hermes
+# About React Native Bridge
 
 <Row>
   <Column justify="center">
-    <GPTImage src="/gpt-hermes.png" />
+    <GPTImage src="/gpt-bridge-fall.webp" />
   </Column>
   <Column justify="end" align="right">
     <Text>Naturalclar</Text>
-    <Link href="https://meguro.es">meguro.es #26</Link>
+    <Link href="https://meguro.es">meguro.es #27</Link>
   </Column>
 </Row>
 
@@ -20,7 +20,7 @@ export { Themes } from "./Themes.tsx";
 <Row>
   <Column align="left">
     <Heading>Naturalclar</Heading>
-    <Text>Developer at Stand.fm</Text>
+    <Text>Developer at Izumo</Text>
     <Text>React Native Community</Text>
     <Text>
       X: <Link href="https://x.com/natural_clar">@natural_clar</Link>
@@ -38,13 +38,26 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+# About me
+
+<Row>
+  <Column align="center">
+    <Image width="80vw" height="50vh" objectFit="contain" src="./anilive.png"/>
+    <Link href="https://anilive.app/">Anilive.app</Link>
+  </Column>
+</Row>
+
+<Note>Ad slide</Note>
+
+---
+
 # 本日の概要
 
 <Row>
   <Column align="left">
-    <Text>Hermes Engine について</Text>
-    <Text>Static Hermes による変化</Text>
-    <Text>shermes、deno、bun の軽い比較</Text>
+    <Text>React Native New Architecture について</Text>
+    <Text>React Native Bridge: Before</Text>
+    <Text>React Native Bridge: After</Text>
   </Column>
 </Row>
 
@@ -66,7 +79,7 @@ export { Themes } from "./Themes.tsx";
   <Column align="left">
     <Text>Meta社が開発している JS Engine</Text>
     <SubText>
-      他のJsEngine：V8 (Node, Chrome), JSC (Safari), SpiderMonkey(FireFox) 等
+      他のJsEngine：V8 (node, Chrome), JSC (Safari), SpiderMonkey(FireFox) 等
     </SubText>
     <Text>主にReact Native で使用されている</Text>
     <SubText>
@@ -461,11 +474,6 @@ fizzBuzz(); // Call the function
 
 <Row>
   <Column align="left">
-    <Text>Hermes は JS をビルド前にバイトコードに変換する</Text>
-    <Text>Static Hermes は JS をビルド前にネイティブコードに変換する</Text>
-    <Text>Static Hermes は C のコードと平行して実行できる</Text>
-    <Text>Hermes と Static Hermes は併用できる</Text>
-    <Text>Static Hermes は React Native 外でも使える事が期待できる</Text>
   </Column>
 </Row>
 
@@ -477,9 +485,5 @@ fizzBuzz(); // Call the function
 
 # Refs
 
-- [hermes docs](https://hermesengine.dev/)
-- [RNEU 2019: Improving React Native Performance](https://youtu.be/BkRE4MsqFXU?si=LRXXWCm-YAMKN6r2)
-- [RNEU 2023: Demystifying JavaScript Engines](https://www.youtube.com/watch?v=LIhDyF1Gatc)
-- [RNEU 2023: Static Hermes: the Next Generation of Hermes](https://www.youtube.com/watch?v=q-xKYA0EO-c)
-- [Discussion: How to try Static Hermes](https://github.com/facebook/hermes/discussions/1137)
-- [Compiling TypeScript to Native Code](https://medium.com/@gautam1168/compiling-typescript-to-native-code-0238d69ca582)
+- [React Native 0.74 Blog Post](https://reactnative.dev/blog/2024/04/22/release-0.74)
+- [Bridgeless By Default](https://github.com/reactwg/react-native-new-architecture/discussions/174)
