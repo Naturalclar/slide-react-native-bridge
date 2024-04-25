@@ -25,7 +25,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "vite dev"
+    "dev": "vite dev",
+    "screenshot": "node ./screenshot.mjs",
+    "deploy": "vercel --prod"
   }
 }
-
