@@ -1,7 +1,7 @@
 export { Components } from "./Components.tsx";
 export { Themes } from "./Themes.tsx";
 
-# About React Native Bridge
+# The Fall of React Native Bridge
 
 <Row>
   <Column justify="center">
@@ -38,11 +38,12 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+
 # About me
 
 <Row>
   <Column align="center">
-    <Image width="80vw" height="50vh" objectFit="contain" src="./anilive.png"/>
+    <Image width="50vw" height="30vh" objectFit="contain" src="./anilive.png"/>
     <Link href="https://anilive.app/">Anilive.app</Link>
   </Column>
 </Row>
@@ -51,422 +52,272 @@ export { Themes } from "./Themes.tsx";
 
 ---
 
+# The Fall of React Native Bridge
+
+---
+
 # 本日の概要
 
 <Row>
   <Column align="left">
+    <Text>React Native の仕組み: Before</Text>
     <Text>React Native New Architecture について</Text>
-    <Text>React Native Bridge: Before</Text>
     <Text>React Native Bridge: After</Text>
   </Column>
 </Row>
 
 ---
 
-# Hermes Engine
+# React Native の仕組み: Before
 
 <Row>
   <Column justify="center">
-    <GPTImage src="/gpt-hermes.png" />
+    <GPTImage src="/gpt-react-native-bridge.webp" />
   </Column>
 </Row>
 
 ---
 
-# Hermes Engine
+# React Native の仕組み: Before
 
 <Row>
   <Column align="left">
-    <Text>Meta社が開発している JS Engine</Text>
-    <SubText>
-      他のJsEngine：V8 (node, Chrome), JSC (Safari), SpiderMonkey(FireFox) 等
-    </SubText>
-    <Text>主にReact Native で使用されている</Text>
-    <SubText>
-      MarketPlace や Meta Quest のストア等、Meta社の Production
-      アプリでも使われている
-    </SubText>
-    <Text>TTI、アプリサイズ、メモリの削減</Text>
+    <Text>Bridge: Obj-C/Java からJS 呼び出すための仕組み</Text>
+    <Text>Request と Response を JSON を使って非同期的にやり取りを行う</Text>
+    <Text>React の Reconsiler の結果も一旦 JSON にした上で Native 層から Yoga に渡して描画する</Text>
+    <Text>このJSONのやり取りを行う部分が Bridge と呼ばれていた</Text>
+    <Text>JavaScript とNative は Bridge を介して完全に分離されていた</Text>
   </Column>
 </Row>
 
 <Note>
-  主にReact Nativeで使用されている Meta社でのProductionアプリで使われている
-  MarketPlaceアプリやMeta Quest 3のアプリストアなど
+  Reconsiler の結果がJsonになってYogaに渡される。(ShadowTree)
+  分離されていることはメリット。AngularNative がこの Bridge を使って作成されていたらしい
 </Note>
 
 ---
 
-# 他の JS Engine との違い
-
-<Row>
-  <Column justify="center">
-    <GPTImage src="/gpt-jsengines.png" />
-  </Column>
-</Row>
-
----
-
-# 通常の JsEngine
+# Bridge の問題点
 
 <Row>
   <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text>Minify されたJSを読み込む</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text bold>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text>Minify されたJSを読み込む</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text bold>Vite, Webpack, Metro</Text>
-    <Text bold>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text>Minify されたJSを読み込む</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text bold>Vite, Webpack, Metro</Text>
-    <Text bold>コードのバンドル化</Text>
-    <Text bold>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text>Minify されたJSを読み込む</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text bold>Minify されたJSを読み込む</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text bold>Minify されたJSを読み込む</Text>
-    <Text bold>コードをParseしてASTに変換</Text>
-    <Text>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text bold>Minify されたJSを読み込む</Text>
-    <Text bold>コードをParseしてASTに変換</Text>
-    <Text bold>実行する関数をバイトコードに変換</Text>
-    <Text>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-transition: none
-
---
-
-# 通常の JsEngine
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>Vite, Webpack, Metro</Text>
-    <Text>コードのバンドル化</Text>
-    <Text>コードのMinify化</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text bold>Minify されたJSを読み込む</Text>
-    <Text bold>コードをParseしてASTに変換</Text>
-    <Text bold>実行する関数をバイトコードに変換</Text>
-    <Text bold>JIT Compile による効率化</Text>
-  </Column>
-</Row>
-
----
-
-# 従来の JsEngine の問題点
-
-<Row>
-  <Column align="left">
-    <Text>モバイルで使うにあたって：</Text>
-    <Text>JITによる効率化が行われるまでに時間がかかる</Text>
-    <Text>ユーザーの実行環境のスペックに依存する</Text>
-    <Text>アプリ起動時にJITの恩恵が殆ど受けられない</Text>
-  </Column>
-</Row>
-
----
-
-# Hermes の場合
-
-<Row>
-  <Column align="left">
-    <Heading>ビルド時</Heading>
-    <Text>コードのバンドル化</Text>
-    <Text>コードをParseしてASTに変換</Text>
-    <Text>AST から SSA IRの生成</Text>
-    <Text>SSA IRからバイトコードの作成</Text>
-  </Column>
-  <Splitter />
-  <Column align="left">
-    <Heading>実行時</Heading>
-    <Text>生成されたバイトコードを読み込む</Text>
-    <Text>バイトコードを実行</Text>
+    <Text>すべての処理が非同期で行われる</Text>
+    <SubText>Component が多い ListView 等で高速でスクロールすると描画が読み込まれるまで白画面になっていた</SubText>
+    <Text>アプリ起動時の負荷が大きい</Text>
+    <SubText>いつメソッドが呼ばれるかわからない為、アプリビルド時にすべての JS コードを起動時に読み込んでいた</SubText>
+    <Text>処理の優先順位の設定が行えない</Text>
   </Column>
 </Row>
 
 <Note>
-  Hermesの場合は、ビルド時にバイトコードを生成して、実行時にバイトコードを実行する
-  バイトコードはMinifyされたJSよりも小さく生成される SSAはStatic Single
-  Assignment form IR は Internal Representation of the code used by modern
-  optimizing compilers
-  最適化の内容は重複する文字列の削除や、デッドコードの削除、変数の最適化など
-  変数名の削除、関数名の削除
 </Note>
 
 ---
 
-# SSA IR
+# React Native New Architecture
 
 <Row>
   <Column align="left">
-    <Text>Static Single Assignment form</Text>
-    <Text>
-      コンパイラによる中間表現のひとつ
-    </Text>
-    <Text>
-      デッドコードの削除、変数の最適化などが行われる
-    </Text>
-    <Text>
-    詳しくはWiki
-    </Text>
-  </Column>
-  <Column>
-    <Image src="./ssa-wiki.png"/>
+    <Text>2018年に React Conf 発表された再構築方針</Text>
+    <Text>Bridge を介さずに JavaScript と Native の通信を可能にする</Text>
+    <Text>それを可能とするために様々なステップが必要</Text>
+    <SubText>現行の Facebook アプリは React Native が使われている部分がすべて New Architecture に置き換わっている</SubText>
   </Column>
 </Row>
 
----
-
-# Hermes まとめ
-
-- ビルド前にバイトコードを生成するため、ユーザーの実行環境に依存しない
-- バイトコードは Minify された JS よりも小さく生成されるためサイズの削減になる
-- JITの読み込みが不要なため起動時間が短縮される
-- JIT Optimization の恩恵は受けられない
+<Note>
+</Note>
 
 ---
 
-# Static Hermes
 
-<Row>
-  <Column justify="center">
-    <GPTImage src="/gpt-js.png" />
-  </Column>
-</Row>
-
----
-
-# Static Hermes
+# ここ６年で追加された機能 
 
 <Row>
   <Column align="left">
-    <Text>型付きの JavaScript をビルド時に NativeCode に変換する</Text>
-    <Text>Cで書かれたコードと同じパフォーマンスを出すことができる</Text>
-    <Text>生成には sound type で書かれている JS が必要</Text>
-    <Text>必要に応じて従来のHermesで生成されたバイトコード使い分ける</Text>
+    <Text>JSI</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+    <Text>Turbo Modules</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+transition: none
+
+--
+
+# ここ６年で追加された機能 
+
+<Row>
+  <Column align="left">
+    <Text>JSI</Text>
+    <Text>Hermes</Text>
+    <Text>React Native CodeGen</Text>
+    <Text>Turbo Modules</Text>
+    <Text>Fabric Renderer</Text>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+# JSI 
+
+<Row>
+  <Column align="left">
+    <Text>JavaScript Interface</Text>
+    <SubText></SubText>
+    <Text>JSEngine のWrapper</Text>
+    <SubText>使用する JSEngine に依存しない為、それまで使っていた JSC の他、V8 や Hermes を組み込めるようになった</SubText>
+    <Text>ネイティブ層への参照を C++ で持つ</Text>
+    <SubText>JavaScript から C++ のメソッドを実行したり、その逆も可能</SubText>
+  </Column>
+</Row>
+
+<Note>
+</Note>
+
+---
+
+# Hermes 
+
+<Row>
+  <Column align="left">
+    <Text>JS Runtime</Text>
+    <Text>アプリビルド時にJavaScriptをバイトコードに変換する</Text>
+    <Text>JIT Compile に頼らないことで、全体の起動時間を短縮した</Text>
+    <Text>Amazon や Microsoft が typescript の実装をサポート</Text>
   </Column>
 </Row>
 
 ---
 
-# Sound types とは
+# React Native Codegen
 
-このコードは sound type で書かれているか？
-
-```ts
-function addXY(x: number, y: number): number {
-  return x + y;
-}
-```
-
----
-
-# Sound types とは
-
-型的に問題なくても、実行時にエラーになってしまう。
-
-```ts
-function addXY(x: number, y: number): number {
-  return x + y;
-}
-
-let a: number[] = [10, 20, 30];
-
-// 型的にはエラーにならないが、undefined + undefined になってしまうので型的には間違っている
-addXY(a[10], a[11]);
-```
+<Row>
+  <Column align="left">
+    <Text>JavaScript から C++ を呼び出すコードをコンパイルする際に型情報が必要になる</Text>
+    <SubText>C++ 側のコードを手動で書くことも可能だが自動化したい</SubText>
+    <Text>型情報のある Flow や TypeScript から C++ 用の型を生成する</Text>
+    <Text>Microsoft が typescript の実装をサポート</Text>
+  </Column>
+</Row>
 
 ---
 
-# Static Hermes の利点
+# Turbo Modules
 
-- Hermes によって、起動時間は短縮されたが、JIT の恩恵を受けることはできなくなった
-- React Native では c++ を使って必要な処理を高速化することはできるが、JS 開発者にはハードルが高い
-- Static Hermes では、TypeScript/Flow で書かれた JS を C 同等のパフォーマンスで実行できる
-- Static Hermes では C のコードと平行して実行することもできる
-
----
-
-# サイズ比較
-
-<Text>fizzbuzz by ChatGPT</Text>
-
-```ts
-// main.ts
-function fizzBuzz(): void {
-  for (let i = 0; i <= 15; i++) {
-    let output = "";
-    if (i % 3 === 0) {output += "fizz";}
-    if (i % 5 === 0) {output += "buzz";}
-    console.log(output || i);
-  }
-}
-fizzBuzz(); // Call the function
-```
+<Row>
+  <Column align="left">
+    <Text>Camera や Audio など、ネイティブ側に存在するモジュールを実行する仕組み</Text>
+    <SubText>以前は Bridge を介してすべてを非同期的に呼んでいた</SubText>
+    <Text>Objective-C/Swift, Java/Kotlin のコードを JSI 経由で呼び出す</Text>
+    <SubText>C++ を通して Objective-C++, JNI 経由での通信を可能にする</SubText>
+    <SubText>C++ への参照を持つため、画像データに対してフィルターを掛ける時等、JSI 側のみで処理を行って結果だけを JS 側に返すことも可能</SubText>
+  </Column>
+</Row>
 
 ---
 
-# サイズ比較
+# Fabrics Renderer
 
-- `deno compile --unstable ./main.ts --output deno-bin`
-- `bun build ./main.ts --compile --outfile bun-bin`
-- `shermes -typed -o shermes-bin ./main.ts`
+<Row>
+  <Column align="left">
+    <Text>画面描画を同期的に行うための仕組み。</Text>
+    <SubText>以前は Bridge を介して React の consile 結果を Native に送り、そこから Yoga に渡して描画内容が決定されていた</SubText>
+    <Text>レイアウトエンジンの Yoga が同期的に呼び出せる</Text>
+    <SubText>Yoga が C++ 製なので JSI と相性が良い</SubText>
+    <Text>描画が同期的に行われることによって React 18 の concurrent rendering が React Native でもできるようになった</Text>
+  </Column>
+</Row>
 
 ---
 
-# サイズ比較
+# The Bridge
 
-<Image src="./bin-comparison.png" />
+<Row>
+  <Column align="left">
+    <Text>New Architecture への移行期間の間、後方互換性の為にBridgeは残されていた</Text>
+    <SubText>Bridgeがあることにより、アプリの起動時間やアプリサイズに影響していた</SubText>
+    <Text>Turbo Modules, Fabric Renderer, Hermes はすべてオプトイン</Text>
+    <SubText>Fabric Renderer を使わずに Hermes の恩恵だけを受けるなども可能</SubText>
+    <Text>現状、Turbo Modules と Hermes はデフォルトで有効になっている</Text>
+  </Column>
+</Row>
+
+---
+
+# Bridgeless Mode
+
+<Row>
+  <Column align="left">
+    <Text>New Architecture をすべて有効にした場合、Bridge を外すことができる(オプトイン)</Text>
+    <Text>最新の 0.74.0 では New Architecture を有効にした場合デフォルトで Bridge が無効になる</Text>
+    <SubText>0.74.0 のリリースに向けて、よく使われているサードパーティライブラリのNew Architecture対応を行った</SubText>
+    <Text>次に出る 0.75.0 では New Architecture がデフォルトで有効化される予定</Text>
+  </Column>
+</Row>
 
 ---
 
@@ -474,6 +325,10 @@ fizzBuzz(); // Call the function
 
 <Row>
   <Column align="left">
+    <Text>New Architecture によって JavaScript 層から Native コードを同期的に呼び出せるようになった</Text>
+    <Text>JS 層と Native 層を非同期的に繋げていた Bridge が最新の React Native からデフォルトで使われなくなった</Text>
+    <Text>Bridge の削除によってアプリの起動速度改善、アプリサイズの削減が行われた</Text>
+    <Text>ここ６年の地道な変更によってかなりパフォーマンス的に改善された</Text>
   </Column>
 </Row>
 
@@ -485,5 +340,10 @@ fizzBuzz(); // Call the function
 
 # Refs
 
+- [React Native New Architecture - React Conf 2018](https://www.youtube.com/watch?v=UcqRXTriUVI)
 - [React Native 0.74 Blog Post](https://reactnative.dev/blog/2024/04/22/release-0.74)
 - [Bridgeless By Default](https://github.com/reactwg/react-native-new-architecture/discussions/174)
+- [About the New Architecture](https://reactnative.dev/docs/the-new-architecture/landing-page)
+- [react-native-new-architecture/docs](https://github.com/reactwg/react-native-new-architecture/tree/main/docs)
+- [The Bridge to JSI - React Native London 2022](https://www.youtube.com/watch?v=Hzjy9ipIuyc&t=511sv)
+- [New Architecture Comparison - X post](https://x.com/notbrent/status/1778266063832056285)
